@@ -29,6 +29,6 @@ func Register(c *gin.Context) {
 // GetDataUser funcion para traer toda la información del usuario
 func GetDataUser(c *gin.Context) {
 	user := c.MustGet("user").(*User)
-	response := global.ResponseServices(user, "200", "Se autentico el usuario con exito")
+	response := global.ResponseServices(user, "200", "Información del usuario")
 	c.JSON(http.StatusOK, response)
 }
