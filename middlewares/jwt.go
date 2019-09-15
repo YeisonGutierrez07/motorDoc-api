@@ -4,10 +4,10 @@ import (
 	"strings"
 	"time"
 
-	"bitbucket.org/app-squad/qtienda-api/models"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 	"github.com/motorDoc-api/shared"
+	"github.com/motorDoc-api/v1/users"
 )
 
 // SigningKey valirable
@@ -39,8 +39,8 @@ func AuthHandler(authRoles ...string) gin.HandlerFunc {
 			return
 		}
 
-		user := &models.User{}
-		if !shared.GetDb().Preload("Stores.StoreCorbeta").Preload("Stores").Preload("Provider").Where("id = ?", valid.Claims.(jwt.MapClaims)["user_id"]).First(&user).RecordNotFound() {
+		user := &users.User{}
+		if !shared.GetDb().Set("gorm:auto_preload", true).Where("id = ?", valid.Claims.(jwt.MapClaims)["user_id"]).First(&user).RecordNotFound() {
 			c.Set("user", user)
 			c.Next()
 		} else {

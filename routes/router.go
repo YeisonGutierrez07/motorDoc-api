@@ -3,6 +3,7 @@ package routes
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/motorDoc-api/middlewares"
+	"github.com/motorDoc-api/v1/auth"
 	"github.com/motorDoc-api/v1/users"
 )
 
@@ -25,12 +26,13 @@ func Routes(r *gin.Engine) {
 	v1 := r.Group("/v1")
 	{
 		//// rutas publicas
-		v1.GET("/pruebaS", users.GetAllUsers)
-
+		v1.POST("/register", users.Register)
+		v1.POST("/login", auth.HandleLogin)
 	}
 	//// rutas privadas
 	v1.Use(middlewares.AuthHandler(""))
 	{
-		v1.GET("/prueba", users.GetAllUsers)
+		user := v1.Group("user")
+		user.GET("/", users.GetDataUser)
 	}
 }

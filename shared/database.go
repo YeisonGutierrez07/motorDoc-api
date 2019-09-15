@@ -18,7 +18,7 @@ func Init() {
 		host     = "localhost"
 		user     = "postgres"
 		password = "root"
-		dbname   = "biblioStore"
+		dbname   = "motorDoc"
 		database = "motorDoc"
 	)
 
