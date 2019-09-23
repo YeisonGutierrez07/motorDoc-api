@@ -16,12 +16,10 @@ func RegisterNewUser(dataNewUser NewUser) (User, error) {
 	user.Password = global.EncryptPassword(strings.TrimSpace(dataNewUser.Password))
 	user.Email = strings.TrimSpace(dataNewUser.Email)
 	user.Address = strings.TrimSpace(dataNewUser.Address)
-	user.City = strings.TrimSpace(dataNewUser.City)
-	user.MobilePhone = strings.TrimSpace(dataNewUser.MobilePhone)
+	user.City = "BOGOTÁ"
+	user.MobilePhone = dataNewUser.MobilePhone
 	user.Credential = strings.TrimSpace(dataNewUser.Credential)
 	user.ProfilePic = strings.TrimSpace(dataNewUser.ProfilePic)
-	user.Longitude = dataNewUser.Longitude
-	user.Latitude = dataNewUser.Latitude
 
 	err := shared.GetDb().Create(&user).First(&user).Error
 	if err != nil {

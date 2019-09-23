@@ -4,6 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/motorDoc-api/middlewares"
 	"github.com/motorDoc-api/v1/auth"
+	"github.com/motorDoc-api/v1/company"
 	"github.com/motorDoc-api/v1/users"
 )
 
@@ -32,6 +33,14 @@ func Routes(r *gin.Engine) {
 	//// rutas privadas
 	v1.Use(middlewares.AuthHandler(""))
 	{
+
+		// Conpanies
+		companiesGroup := v1.Group("companies")
+		companiesGroup.GET("/", company.GetAll)
+		companiesGroup.POST("/create", company.CreateNewCompany)
+		companiesGroup.PUT("/changeStatus", company.ChangeStatusCompany)
+		companiesGroup.DELETE("/deleteCompany/:id", company.DeleteCompany)
+
 		user := v1.Group("user")
 		user.GET("/", users.GetDataUser)
 	}
