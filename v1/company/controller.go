@@ -33,7 +33,7 @@ func CreateNewCompany(c *gin.Context) {
 		r, errRegister := RegisterNewCompany(companyData)
 		if errRegister != nil {
 			response := global.ResponseServices(companyData, "400", errRegister.Error())
-			c.JSON(http.StatusOK, response)
+			c.JSON(400, response)
 			return
 		}
 		response := global.ResponseServices(r, "200", "Se he creado el usuario con exito")
@@ -41,7 +41,7 @@ func CreateNewCompany(c *gin.Context) {
 		return
 	}
 	response := global.ResponseServices(companyData, "400", err.Error())
-	c.JSON(http.StatusOK, response)
+	c.JSON(400, response)
 }
 
 // ChangeStatusCompany Cambiar el estado de las empresas
@@ -52,7 +52,7 @@ func ChangeStatusCompany(c *gin.Context) {
 		r, errRegister := ChangeStatusService(changeStatus)
 		if errRegister != nil {
 			response := global.ResponseServices(changeStatus, "400", errRegister.Error())
-			c.JSON(http.StatusOK, response)
+			c.JSON(400, response)
 			return
 		}
 		response := global.ResponseServices(r, "200", "Se he creado el usuario con exito")
@@ -60,7 +60,7 @@ func ChangeStatusCompany(c *gin.Context) {
 		return
 	}
 	response := global.ResponseServices(changeStatus, "400", err.Error())
-	c.JSON(http.StatusOK, response)
+	c.JSON(400, response)
 }
 
 // DeleteCompany funcion para eliminar empresas
@@ -73,7 +73,7 @@ func DeleteCompany(c *gin.Context) {
 	r, errRegister := ChangeStatusService(changeStatus)
 	if errRegister != nil {
 		response := global.ResponseServices(changeStatus, "400", errRegister.Error())
-		c.JSON(http.StatusOK, response)
+		c.JSON(400, response)
 		return
 	}
 	response := global.ResponseServices(r, "200", "Se he creado el usuario con exito")
