@@ -18,7 +18,7 @@ func GetCompanies(user *users.User, name string) ([]Company, error) {
 	var filterByName = ""
 
 	if name != "" {
-		filterByName = "unaccent(LOWER(business_name)) LIKE unaccent('%" + name + "%')"
+		filterByName = "LOWER(business_name) LIKE '%" + name + "%'"
 	}
 	shared.GetDb().Where(filterByName).Where("status=0 OR status=1").Find(&companies)
 	return companies, nil
