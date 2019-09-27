@@ -5,6 +5,7 @@ import "github.com/motorDoc-api/v1/global"
 const (
 	ROLE_SUPERADMIN = "SUPERADMIN"
 	ROLE_COMPANY    = "COMPANY"
+	ROLE_WORKSHOP   = "WORKSHOP"
 	ROLE_MECHANIC   = "MECHANIC"
 	ROLE_CLIENT     = "CLIENT"
 )
