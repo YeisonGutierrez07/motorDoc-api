@@ -37,7 +37,7 @@ func RegisterNewCompany(dataNewCompany CreateCompany) (users.User, error) {
 	newUser.MobilePhone = dataNewCompany.MobilePhone
 	newUser.Credential = dataNewCompany.Credential
 	newUser.ProfilePic = dataNewCompany.ProfilePic
-	newUser.Role = users.ROLE_COMPANY
+	newUser.Role = "COMPANY"
 
 	user, errRegister := users.RegisterNewUser(newUser)
 	if errRegister != nil {

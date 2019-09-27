@@ -5,13 +5,11 @@ import "github.com/motorDoc-api/v1/global"
 // Company Modelo para los empresas
 type Company struct {
 	global.BaseModel
-	UserID       int64   `json:"user_id" db:"user_id"`
-	BusinessName string  `json:"business_name" db:"business_name"`
-	Nit          string  `json:"nit" db:"nit"`
-	Logo         string  `json:"logo" db:"logo"`
-	Status       int     `json:"status" db:"status"`
-	Latitude     float64 `json:"latitude" db:"latitude" binding:"required"`
-	Longitude    float64 `json:"longitude" db:"longitude" binding:"required"`
+	UserID       int64  `json:"user_id" db:"user_id"`
+	BusinessName string `json:"business_name" db:"business_name"`
+	Nit          string `json:"nit" db:"nit"`
+	Logo         string `json:"logo" db:"logo"`
+	Status       int    `json:"status" db:"status"`
 }
 
 type companyClients struct {
