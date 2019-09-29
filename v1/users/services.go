@@ -20,6 +20,7 @@ func RegisterNewUser(dataNewUser NewUser) (User, error) {
 	user.MobilePhone = dataNewUser.MobilePhone
 	user.Credential = strings.TrimSpace(dataNewUser.Credential)
 	user.ProfilePic = strings.TrimSpace(dataNewUser.ProfilePic)
+	user.Role = dataNewUser.Role
 
 	err := shared.GetDb().Create(&user).First(&user).Error
 	if err != nil {

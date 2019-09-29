@@ -41,7 +41,8 @@ func main() {
 
 	// talleres
 	shared.GetDb().AutoMigrate(workshop.Workshop{}).
-		AddForeignKey("company_id", "companies(id)", "NO ACTION", "NO ACTION")
+		AddForeignKey("company_id", "companies(id)", "NO ACTION", "NO ACTION").
+		AddForeignKey("user_id", "users(id)", "NO ACTION", "NO ACTION")
 
 	// rutinas
 	shared.GetDb().AutoMigrate(routines.Routine{})
