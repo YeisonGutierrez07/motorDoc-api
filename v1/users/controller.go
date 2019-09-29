@@ -7,7 +7,7 @@ import (
 	"github.com/motorDoc-api/v1/global"
 )
 
-// Register registrar nuevos usuarios
+// Register registrar nuevos usuarios administradores
 func Register(c *gin.Context) {
 	newUser := NewUser{}
 	err := c.ShouldBind(&newUser)
