@@ -28,8 +28,6 @@ func Init() {
 		host,
 		database,
 	)
-	fmt.Println(dbinfo)
-
 	db, err = gorm.Open("postgres", dbinfo)
 	if err != nil {
 		log.Println("Error al conectarse a la base de datos")

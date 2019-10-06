@@ -80,3 +80,17 @@ func DeleteCompany(c *gin.Context) {
 	c.JSON(http.StatusOK, response)
 	return
 }
+
+// MyCompany funcion para traerla  información de mi compañia
+func MyCompany(c *gin.Context) {
+	user := c.MustGet("user").(*users.User)
+
+	company, err := GetCompanyByUser(user)
+	if err != nil {
+		response := global.ResponseServices(user, "400", err.Error())
+		c.JSON(http.StatusUnauthorized, response)
+		return
+	}
+	response := global.ResponseServices(company, "200", "Exito")
+	c.JSON(http.StatusOK, response)
+}
