@@ -71,3 +71,14 @@ func ChangeStatusService(dataNewCompany changeStatus) (Company, error) {
 	}
 	return company, nil
 }
+
+// GetCompanyByUser servicio para buscar y retornar la info de la empresa
+func GetCompanyByUser(user *users.User) (Company, error) {
+	company := Company{}
+
+	if shared.GetDb().Set("gorm:auto_preload", true).Where("user_id = ?", user.ID).First(&company).RecordNotFound() {
+		return company, errors.New("No se encontro el este usuario como mecanico")
+	}
+
+	return company, nil
+}

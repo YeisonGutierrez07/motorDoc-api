@@ -22,7 +22,7 @@ func RegisterNewUser(dataNewUser NewUser) (User, error) {
 	user.ProfilePic = strings.TrimSpace(dataNewUser.ProfilePic)
 	user.Role = dataNewUser.Role
 
-	err := shared.GetDb().Create(&user).First(&user).Error
+	err := shared.GetDb().Create(&user).Error
 	if err != nil {
 		return user, err
 	}

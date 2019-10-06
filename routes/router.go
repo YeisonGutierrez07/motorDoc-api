@@ -7,6 +7,7 @@ import (
 	"github.com/motorDoc-api/v1/company"
 	"github.com/motorDoc-api/v1/mechanic"
 	"github.com/motorDoc-api/v1/users"
+	"github.com/motorDoc-api/v1/workshop"
 )
 
 // InitRouter inicializar del paquete de routes
@@ -42,9 +43,17 @@ func Routes(r *gin.Engine) {
 		companiesGroup.PUT("/changeStatus", company.ChangeStatusCompany)
 		companiesGroup.DELETE("/deleteCompany/:id", company.DeleteCompany)
 
+		companiesGroup.GET("/myCompany", company.MyCompany)
+
+		// Mechanic
+		workshops := v1.Group("workshop")
+		workshops.GET("/", workshop.Get)
+
 		// Mechanic
 		mechanicGroup := v1.Group("mechanic")
+		mechanicGroup.POST("/create", mechanic.Create)
 		mechanicGroup.GET("/", mechanic.Get)
+		mechanicGroup.GET("/misMechanics", mechanic.MisMechanics)
 
 		user := v1.Group("user")
 		user.GET("/", users.GetDataUser)
