@@ -44,6 +44,7 @@ func Routes(r *gin.Engine) {
 		companiesGroup.DELETE("/deleteCompany/:id", company.DeleteCompany)
 
 		companiesGroup.GET("/myCompany", company.MyCompany)
+		companiesGroup.GET("/misWorkShop", company.MisWorkShop)
 
 		// Mechanic
 		workshops := v1.Group("workshop")

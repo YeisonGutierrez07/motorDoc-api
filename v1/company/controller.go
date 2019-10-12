@@ -94,3 +94,17 @@ func MyCompany(c *gin.Context) {
 	response := global.ResponseServices(company, "200", "Exito")
 	c.JSON(http.StatusOK, response)
 }
+
+// MisWorkShop funcion para traerla  información de los mecanicos talleres
+func MisWorkShop(c *gin.Context) {
+	user := c.MustGet("user").(*users.User)
+
+	mechanic, err := GetMisMechanic(user)
+	if err != nil {
+		response := global.ResponseServices(user, "400", err.Error())
+		c.JSON(http.StatusUnauthorized, response)
+		return
+	}
+	response := global.ResponseServices(mechanic, "200", "Exito")
+	c.JSON(http.StatusOK, response)
+}
