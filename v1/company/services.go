@@ -4,6 +4,8 @@ import (
 	"errors"
 	"strings"
 
+	"github.com/motorDoc-api/v1/workshop"
+
 	"github.com/motorDoc-api/shared"
 	"github.com/motorDoc-api/v1/users"
 )
@@ -81,4 +83,20 @@ func GetCompanyByUser(user *users.User) (Company, error) {
 	}
 
 	return company, nil
+}
+
+// GetMisMechanic servicio para buscar y retornar los mecanicos asociados al taller
+func GetMisMechanic(user *users.User) ([]workshop.Workshop, error) {
+	company := Company{}
+	workshops := []workshop.Workshop{}
+
+	if shared.GetDb().Where("user_id = ?", user.ID).First(&company).RecordNotFound() {
+		return workshops, errors.New("No se encontro el este usuario como una compañia")
+	}
+
+	if shared.GetDb().Set("gorm:auto_preload", true).Where("company_id = ?", company.ID).Find(&workshops).RecordNotFound() {
+		return workshops, errors.New("No se encontro un listado de mecanicos")
+	}
+
+	return workshops, nil
 }
