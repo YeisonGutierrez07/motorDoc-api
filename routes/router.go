@@ -3,11 +3,11 @@ package routes
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/motorDoc-api/middlewares"
-	"github.com/motorDoc-api/v1/auth"
-	"github.com/motorDoc-api/v1/company"
-	"github.com/motorDoc-api/v1/mechanic"
-	"github.com/motorDoc-api/v1/users"
-	"github.com/motorDoc-api/v1/workshop"
+	"github.com/motorDoc-api/v1/app/auth"
+	"github.com/motorDoc-api/v1/app/company"
+	"github.com/motorDoc-api/v1/app/mechanic"
+	"github.com/motorDoc-api/v1/app/users"
+	"github.com/motorDoc-api/v1/app/workshop"
 )
 
 // InitRouter inicializar del paquete de routes
@@ -48,6 +48,7 @@ func Routes(r *gin.Engine) {
 
 		// Mechanic
 		workshops := v1.Group("workshop")
+		workshops.POST("/create", workshop.Create)
 		workshops.GET("/", workshop.Get)
 
 		// Mechanic
