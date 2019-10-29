@@ -17,9 +17,9 @@ func Init() {
 	const (
 		host     = "localhost"
 		user     = "postgres"
-		password = "root"
-		dbname   = "motorDoc"
-		database = "motorDoc"
+		password = "motordoc"
+		dbname   = "postgres"
+		database = "motordoc"
 	)
 
 	dbinfo := fmt.Sprintf("user=%s password=%s host=%s port=5432 dbname=%s sslmode=disable",
