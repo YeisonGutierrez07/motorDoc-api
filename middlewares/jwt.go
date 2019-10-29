@@ -7,7 +7,7 @@ import (
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 	"github.com/motorDoc-api/shared"
-	"github.com/motorDoc-api/v1/users"
+	"github.com/motorDoc-api/v1/app/users"
 )
 
 // SigningKey valirable

@@ -7,16 +7,16 @@ package main
 import (
 	"github.com/motorDoc-api/routes"
 	"github.com/motorDoc-api/shared"
-	"github.com/motorDoc-api/v1/appointment"
-	"github.com/motorDoc-api/v1/brands"
-	"github.com/motorDoc-api/v1/clients"
-	"github.com/motorDoc-api/v1/company"
-	"github.com/motorDoc-api/v1/maintenance"
-	"github.com/motorDoc-api/v1/mechanic"
-	"github.com/motorDoc-api/v1/routines"
-	"github.com/motorDoc-api/v1/users"
-	"github.com/motorDoc-api/v1/vehicles"
-	"github.com/motorDoc-api/v1/workshop"
+	"github.com/motorDoc-api/v1/app/appointment"
+	"github.com/motorDoc-api/v1/app/brands"
+	"github.com/motorDoc-api/v1/app/clients"
+	"github.com/motorDoc-api/v1/app/company"
+	"github.com/motorDoc-api/v1/app/maintenance"
+	"github.com/motorDoc-api/v1/app/mechanic"
+	"github.com/motorDoc-api/v1/app/routines"
+	"github.com/motorDoc-api/v1/app/users"
+	"github.com/motorDoc-api/v1/app/vehicles"
+	"github.com/motorDoc-api/v1/app/workshop"
 )
 
 func main() {
