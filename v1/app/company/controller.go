@@ -7,12 +7,12 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/motorDoc-api/v1/app/global"
-	"github.com/motorDoc-api/v1/app/users"
+	"github.com/motorDoc-api/v1/entities"
 )
 
 // GetAll funcion para traer toda la información de las empresas
 func GetAll(c *gin.Context) {
-	user := c.MustGet("user").(*users.User)
+	user := c.MustGet("user").(*entities.User)
 	name := c.Query("name")
 
 	companies, err := GetCompanies(user, name)
@@ -36,7 +36,7 @@ func CreateNewCompany(c *gin.Context) {
 			c.JSON(400, response)
 			return
 		}
-		response := global.ResponseServices(r, "200", "Se he creado el usuario con exito")
+		response := global.ResponseServices(r, "200", "Se he creado la empresa con exito")
 		c.JSON(http.StatusOK, response)
 		return
 	}
@@ -46,7 +46,7 @@ func CreateNewCompany(c *gin.Context) {
 
 // ChangeStatusCompany Cambiar el estado de las empresas
 func ChangeStatusCompany(c *gin.Context) {
-	changeStatus := changeStatus{}
+	changeStatus := entities.ChangeStatus{}
 	err := c.ShouldBind(&changeStatus)
 	if err == nil {
 		r, errRegister := ChangeStatusService(changeStatus)
@@ -55,7 +55,7 @@ func ChangeStatusCompany(c *gin.Context) {
 			c.JSON(400, response)
 			return
 		}
-		response := global.ResponseServices(r, "200", "Se he creado el usuario con exito")
+		response := global.ResponseServices(r, "200", "Se he cambiado el estado con exito")
 		c.JSON(http.StatusOK, response)
 		return
 	}
@@ -66,7 +66,7 @@ func ChangeStatusCompany(c *gin.Context) {
 // DeleteCompany funcion para eliminar empresas
 func DeleteCompany(c *gin.Context) {
 	idCompany, _ := strconv.ParseInt(c.Param("id"), 10, 64)
-	changeStatus := changeStatus{}
+	changeStatus := entities.ChangeStatus{}
 	changeStatus.CompanyID = idCompany
 	changeStatus.Status = 2
 
@@ -76,14 +76,14 @@ func DeleteCompany(c *gin.Context) {
 		c.JSON(400, response)
 		return
 	}
-	response := global.ResponseServices(r, "200", "Se he creado el usuario con exito")
+	response := global.ResponseServices(r, "200", "Se he eliminado la empresa con exito")
 	c.JSON(http.StatusOK, response)
 	return
 }
 
 // MyCompany funcion para traerla  información de mi compañia
 func MyCompany(c *gin.Context) {
-	user := c.MustGet("user").(*users.User)
+	user := c.MustGet("user").(*entities.User)
 
 	company, err := GetCompanyByUser(user)
 	if err != nil {
@@ -95,11 +95,11 @@ func MyCompany(c *gin.Context) {
 	c.JSON(http.StatusOK, response)
 }
 
-// MisWorkShop funcion para traerla  información de los mecanicos talleres
-func MisWorkShop(c *gin.Context) {
-	user := c.MustGet("user").(*users.User)
+// MyWorkShop funcion para traerla  información de los mecanicos talleres
+func MyWorkShop(c *gin.Context) {
+	user := c.MustGet("user").(*entities.User)
 
-	mechanic, err := GetMisMechanic(user)
+	mechanic, err := GetMyWorkshops(user)
 	if err != nil {
 		response := global.ResponseServices(user, "400", err.Error())
 		c.JSON(http.StatusUnauthorized, response)
