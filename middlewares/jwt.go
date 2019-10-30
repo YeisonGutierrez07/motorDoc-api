@@ -2,16 +2,12 @@ package middlewares
 
 import (
 	"strings"
-	"time"
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 	"github.com/motorDoc-api/shared"
-	"github.com/motorDoc-api/v1/app/users"
+	"github.com/motorDoc-api/v1/entities"
 )
-
-// SigningKey valirable
-var SigningKey = "$SolidSigningKey$"
 
 // AuthHandler agregar las rutas a un validador
 func AuthHandler(authRoles ...string) gin.HandlerFunc {
@@ -32,14 +28,16 @@ func AuthHandler(authRoles ...string) gin.HandlerFunc {
 		}
 
 		// Validate token
-		valid, err := ValidateToken(t[1], SigningKey)
+		valid, err := ValidateToken(t[1], entities.SigningKey)
 		if err != nil {
 			c.JSON(403, gin.H{"message": "Token de autorización inválido", "status": shared.StatusError, "data": nil})
 			c.Abort()
 			return
 		}
 
-		user := &users.User{}
+		// userID = int64(valid.Claims.(jwt.MapClaims)["user_id"])
+		// user, errUser := entities.GetUser(userID)
+		user := &entities.User{}
 		if !shared.GetDb().Set("gorm:auto_preload", true).Where("id = ?", valid.Claims.(jwt.MapClaims)["user_id"]).First(&user).RecordNotFound() {
 			c.Set("user", user)
 			c.Next()
@@ -58,24 +56,6 @@ func contains(slice []string, item string) bool {
 	}
 	_, ok := set[item]
 	return ok
-}
-
-// GenerateToken generar token en el login
-func GenerateToken(key []byte, userID int64, credential string) (string, error) {
-
-	//new token
-	token := jwt.New(jwt.SigningMethodHS256)
-
-	// Claims
-	claims := make(jwt.MapClaims)
-	claims["user_id"] = userID
-	claims["credential"] = credential
-	claims["exp"] = time.Now().Add(time.Hour*720).UnixNano() / int64(time.Millisecond)
-	token.Claims = claims
-
-	// Sign and get as a string
-	tokenString, err := token.SignedString(key)
-	return tokenString, err
 }
 
 // ValidateToken Validar token enviado desde el cliente
