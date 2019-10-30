@@ -1,23 +1,5 @@
 package company
 
-import (
-	"github.com/motorDoc-api/v1/app/global"
-	"github.com/motorDoc-api/v1/app/users"
-	"github.com/motorDoc-api/v1/app/workshop"
-)
-
-// Company Modelo para los empresas
-type Company struct {
-	global.BaseModel
-	UserID       int64               `json:"user_id" db:"user_id"`
-	User         users.User          `json:"user"`
-	BusinessName string              `json:"business_name" db:"business_name"`
-	Nit          string              `json:"nit" db:"nit"`
-	Logo         string              `json:"logo" db:"logo"`
-	Status       int                 `json:"status" db:"status"`
-	Workshops    []workshop.Workshop `json:"workshops"`
-}
-
 type companyClients struct {
 	ClientID  int64 `json:"client_id" db:"client_id"`
 	CompanyID int64 `json:"company_id" db:"company_id"`
@@ -35,9 +17,4 @@ type CreateCompany struct {
 	BusinessName string `json:"business_name" binding:"required"`
 	ImageCompany string `json:"image_company" binding:"required"`
 	Nit          string `json:"nit" binding:"required"`
-}
-
-type changeStatus struct {
-	CompanyID int64 `json:"company_id" binding:"required"`
-	Status    int   `json:"status"`
 }

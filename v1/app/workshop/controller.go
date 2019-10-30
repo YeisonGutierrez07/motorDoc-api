@@ -5,12 +5,12 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/motorDoc-api/v1/app/global"
-	"github.com/motorDoc-api/v1/app/users"
+	"github.com/motorDoc-api/v1/entities"
 )
 
 // Get funcion para traerla  información de los talleres
 func Get(c *gin.Context) {
-	user := c.MustGet("user").(*users.User)
+	user := c.MustGet("user").(*entities.User)
 
 	workshop, err := GetWorkshop(user)
 	if err != nil {
@@ -25,7 +25,7 @@ func Get(c *gin.Context) {
 // Create registrar de nuevos talleres
 func Create(c *gin.Context) {
 	workshopData := CreateWorkShop{}
-	user := c.MustGet("user").(*users.User)
+	user := c.MustGet("user").(*entities.User)
 
 	err := c.ShouldBind(&workshopData)
 	if err == nil {
@@ -35,7 +35,7 @@ func Create(c *gin.Context) {
 			c.JSON(400, response)
 			return
 		}
-		response := global.ResponseServices(r, "200", "Se he creado el usuario con exito")
+		response := global.ResponseServices(r, "200", "Se he creado el taller con exito")
 		c.JSON(http.StatusOK, response)
 		return
 	}
