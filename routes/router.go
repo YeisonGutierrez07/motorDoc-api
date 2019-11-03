@@ -35,6 +35,9 @@ func Routes(r *gin.Engine) {
 	//// rutas privadas
 	v1.Use(middlewares.AuthHandler(""))
 	{
+		user := v1.Group("user")
+		user.GET("/", users.GetDataUser)
+		user.PUT("/reset", users.ResetPassword)
 
 		// Companies
 		companiesGroup := v1.Group("companies")
@@ -44,20 +47,18 @@ func Routes(r *gin.Engine) {
 		companiesGroup.DELETE("/deleteCompany/:id", company.DeleteCompany)
 
 		companiesGroup.GET("/myCompany", company.MyCompany)
-		companiesGroup.GET("/misWorkShop", company.MisWorkShop)
+		companiesGroup.GET("/myWorkShop", company.MyWorkShop)
 
 		// Mechanic
 		workshops := v1.Group("workshop")
-		workshops.POST("/create", workshop.Create)
 		workshops.GET("/", workshop.Get)
+		workshops.POST("/create", workshop.Create)
 
 		// Mechanic
 		mechanicGroup := v1.Group("mechanic")
 		mechanicGroup.POST("/create", mechanic.Create)
 		mechanicGroup.GET("/", mechanic.Get)
-		mechanicGroup.GET("/misMechanics", mechanic.MisMechanics)
+		mechanicGroup.GET("/myMechanics", mechanic.MyMechanics)
 
-		user := v1.Group("user")
-		user.GET("/", users.GetDataUser)
 	}
 }

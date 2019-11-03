@@ -5,11 +5,12 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/motorDoc-api/v1/app/global"
+	"github.com/motorDoc-api/v1/entities"
 )
 
 // HandleLogin función para hacer login
 func HandleLogin(c *gin.Context) {
-	loginValidator := DataLogin{}
+	loginValidator := entities.DataLogin{}
 	err := c.ShouldBind(&loginValidator)
 	if err == nil {
 		user, errLogin := Login(loginValidator)

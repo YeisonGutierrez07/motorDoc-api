@@ -33,7 +33,7 @@ func Init() {
 		log.Println("Error al conectarse a la base de datos")
 		panic(err)
 	}
-	log.Println("Base de datos conectada")
+	log.Println("------Base de datos conectada-----")
 }
 
 // GetDb funcion que trae la base de datos para consumir desde los demas paquetes
