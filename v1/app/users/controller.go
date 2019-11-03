@@ -27,6 +27,26 @@ func Register(c *gin.Context) {
 	c.JSON(http.StatusOK, response)
 }
 
+// ResetPassword Cambiar la contraseña de los usuarios
+func ResetPassword(c *gin.Context) {
+	ResetPassword := entities.ResetPassword{}
+	user := c.MustGet("user").(*entities.User)
+	err := c.ShouldBind(&ResetPassword)
+	if err == nil {
+		user, errRegister := entities.ResetPasswordUser(user, ResetPassword)
+		if errRegister != nil {
+			response := global.ResponseServices(ResetPassword, "400", errRegister.Error())
+			c.JSON(http.StatusAccepted, response)
+			return
+		}
+		response := global.ResponseServices(user, "200", "Se he cambiado la contraseña con exito")
+		c.JSON(http.StatusOK, response)
+		return
+	}
+	response := global.ResponseServices(ResetPassword, "400", err.Error())
+	c.JSON(http.StatusNotAcceptable, response)
+}
+
 // GetDataUser funcion para traer toda la información del usuario
 func GetDataUser(c *gin.Context) {
 	user := c.MustGet("user").(*entities.User)

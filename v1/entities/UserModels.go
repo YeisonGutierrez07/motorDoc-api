@@ -2,6 +2,7 @@ package entities
 
 import (
 	"errors"
+	"fmt"
 	"strings"
 
 	"github.com/motorDoc-api/shared"
@@ -25,7 +26,7 @@ type User struct {
 	Address     string `json:"address" db:"address"`
 	City        string `json:"city" db:"city"`
 	Role        string `json:"role" db:"role"`
-	MobilePhone int64  `json:"mobilephone" db:"mobile_phone" gorm:"not null;"`
+	MobilePhone int64  `json:"mobile_phone" db:"mobile_phone" gorm:"not null;"`
 	Credential  string `json:"credential" db:"credential" gorm:"not null;UNIQUE_INDEX"`
 	ProfilePic  string `json:"profile_pic" db:"profile_pic"`
 }
@@ -37,17 +38,22 @@ type NewUser struct {
 	Password    string `json:"password" binding:"required"`
 	Email       string `json:"email" binding:"required"`
 	Address     string `json:"address" binding:"required"`
-	City        string `json:"city" binding:"required"`
-	MobilePhone int64  `json:"mobilephone" binding:"required"`
+	City        string `json:"city"`
+	MobilePhone int64  `json:"mobile_phone" binding:"required"`
 	Credential  string `json:"credential" binding:"required"`
-	ProfilePic  string `json:"profile_pic" binding:"required"`
-	Role        string `json:"role" binding:"required"`
+	ProfilePic  string `json:"profile_pic"`
+	Role        string `json:"role"`
 }
 
 // DataLogin modelo que recibe el servicio del login
 type DataLogin struct {
 	Email    string `json:"email" form:"email" binding:"required"`
 	Password string `json:"password" form:"password" binding:"required"`
+}
+
+type ResetPassword struct {
+	Actual   string `json:"actual_password" binding:"required"`
+	Password string `json:"password" binding:"required"`
 }
 
 // ResponseLogin modelo que responde cuando hace login el usuario
@@ -105,4 +111,22 @@ func RegisterNewUser(dataNewUser NewUser) (User, error) {
 		return user, err
 	}
 	return user, nil
+}
+
+// ResetPasswordUser Funcion para cambiar la contraseña de los usuarios
+func ResetPasswordUser(user *User, resetPassword ResetPassword) (User, error) {
+	fmt.Println(resetPassword.Password, "ACTIAL", resetPassword.Actual)
+	userResponse := User{}
+	passwordHashed := EncryptPassword(resetPassword.Actual)
+
+	if !shared.GetDb().Where("email = ?", user.Email).First(&userResponse).RecordNotFound() {
+		if passwordHashed == userResponse.Password {
+			newPassword := EncryptPassword(resetPassword.Password)
+			userResponse.Password = newPassword
+			err := shared.GetDb().Save(&userResponse).Error
+			return userResponse, err
+		}
+		return userResponse, errors.New("La contraseña actual no es la correcta.")
+	}
+	return userResponse, errors.New("El usuario no se encontro en la base de datos")
 }
