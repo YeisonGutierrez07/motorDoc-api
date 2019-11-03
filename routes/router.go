@@ -35,6 +35,10 @@ func Routes(r *gin.Engine) {
 	//// rutas privadas
 	v1.Use(middlewares.AuthHandler(""))
 	{
+		user := v1.Group("user")
+		user.GET("/", users.GetDataUser)
+		user.PUT("/reset", users.ResetPassword)
+
 		// Companies
 		companiesGroup := v1.Group("companies")
 		companiesGroup.GET("/", company.GetAll)
@@ -56,7 +60,5 @@ func Routes(r *gin.Engine) {
 		mechanicGroup.GET("/", mechanic.Get)
 		mechanicGroup.GET("/myMechanics", mechanic.MyMechanics)
 
-		user := v1.Group("user")
-		user.GET("/", users.GetDataUser)
 	}
 }
