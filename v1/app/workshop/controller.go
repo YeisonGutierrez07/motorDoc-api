@@ -42,3 +42,17 @@ func Create(c *gin.Context) {
 	response := global.ResponseServices(workshopData, "400", err.Error())
 	c.JSON(400, response)
 }
+
+// GetAll funcion para traerla  información de todos los talleres
+func GetAll(c *gin.Context) {
+	search := c.Query("search")
+
+	workshops, err := entities.GetAllWorkshop(search)
+	if err != nil {
+		response := global.ResponseServices(workshops, "400", err.Error())
+		c.JSON(http.StatusUnauthorized, response)
+		return
+	}
+	response := global.ResponseServices(workshops, "200", "Exito")
+	c.JSON(http.StatusOK, response)
+}

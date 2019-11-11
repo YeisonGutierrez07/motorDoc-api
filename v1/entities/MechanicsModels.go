@@ -17,14 +17,6 @@ type Mechanic struct {
 	Workshop   Workshop `json:"workshop"`
 }
 
-// MechanicalRoutine modelo para guardar las rutinas por mecanico
-type MechanicalRoutine struct {
-	BaseModel
-	MechanicID    int64  `json:"mechanic_id" db:"mechanic_id"`
-	RoutineID     int64  `json:"routine_id" db:"routine_id"`
-	EstimatedTime string `json:"estimated_time" db:"estimated_time"`
-}
-
 // GetMechanic servicio para buscar en la base de datos y retornar la info del mecanico
 func GetMechanic(user *User) (Mechanic, error) {
 	mechanic := Mechanic{}

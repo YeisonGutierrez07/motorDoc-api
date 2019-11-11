@@ -6,6 +6,7 @@ import (
 	"github.com/motorDoc-api/v1/app/auth"
 	"github.com/motorDoc-api/v1/app/company"
 	"github.com/motorDoc-api/v1/app/mechanic"
+	"github.com/motorDoc-api/v1/app/routines"
 	"github.com/motorDoc-api/v1/app/users"
 	"github.com/motorDoc-api/v1/app/workshop"
 )
@@ -48,6 +49,7 @@ func Routes(r *gin.Engine) {
 		// // Mechanic
 		workshops := v1.Group("workshop")
 		workshops.GET("/", workshop.Get)
+		workshops.GET("/all", workshop.GetAll)
 		workshops.POST("/create", workshop.Create)
 
 		// Mechanic
@@ -55,6 +57,12 @@ func Routes(r *gin.Engine) {
 		mechanicGroup.POST("/create", mechanic.Create)
 		mechanicGroup.GET("/", mechanic.Get)
 		mechanicGroup.GET("/myMechanics", mechanic.MyMechanics)
+
+		// routines
+		routine := v1.Group("routines")
+		routine.GET("", routines.Get)
+		routine.GET("/byWorkshop", routines.GetByWorkshop)
+		routine.POST("/addRoutineByWorkshop", routines.AddRoutineByWorkshop)
 
 		// users
 		user := v1.Group("user")

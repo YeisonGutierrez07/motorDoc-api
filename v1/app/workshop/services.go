@@ -36,6 +36,9 @@ func RegisterNewWorkShop(userCompany *entities.User, dataNewWorkshop CreateWorkS
 	workshop.Address = strings.TrimSpace(dataNewWorkshop.AddressWorkshop)
 	workshop.Logo = dataNewWorkshop.ImageWorkshop
 	workshop.Name = dataNewWorkshop.Name
+	workshop.Description = dataNewWorkshop.Description
+	workshop.Latitude = dataNewWorkshop.Latitude
+	workshop.Longitude = dataNewWorkshop.Longitude
 
 	_, err := entities.CreateWorkshop(userCompany, workshop)
 	return user, err
