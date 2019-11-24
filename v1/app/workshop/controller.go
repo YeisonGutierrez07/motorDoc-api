@@ -2,6 +2,7 @@ package workshop
 
 import (
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"github.com/motorDoc-api/v1/app/global"
@@ -15,6 +16,20 @@ func Get(c *gin.Context) {
 	workshop, err := GetWorkshop(user)
 	if err != nil {
 		response := global.ResponseServices(user, "400", err.Error())
+		c.JSON(http.StatusUnauthorized, response)
+		return
+	}
+	response := global.ResponseServices(workshop, "200", "Exito")
+	c.JSON(http.StatusOK, response)
+}
+
+// GetByID funcion para buscar un taller por ID
+func GetByID(c *gin.Context) {
+	workshopID, _ := strconv.ParseInt(c.Param("workshopID"), 10, 64)
+
+	workshop, err := entities.GetWorkshopByID(workshopID)
+	if err != nil {
+		response := global.ResponseServices(workshop, "400", err.Error())
 		c.JSON(http.StatusUnauthorized, response)
 		return
 	}

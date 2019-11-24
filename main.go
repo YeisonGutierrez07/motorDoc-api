@@ -28,7 +28,7 @@ func main() {
 	// shared.GetDb().AutoMigrate(entities.Company{}).
 	// 	AddForeignKey("user_id", "users(id)", "NO ACTION", "NO ACTION")
 
-	// talleres
+	// // talleres
 	// shared.GetDb().AutoMigrate(entities.Workshop{}).
 	// 	AddForeignKey("company_id", "companies(id)", "NO ACTION", "NO ACTION").
 	// 	AddForeignKey("user_id", "users(id)", "NO ACTION", "NO ACTION")
@@ -51,7 +51,7 @@ func main() {
 
 	// // rutinas por mecanico
 	// shared.GetDb().AutoMigrate(entities.Vehicle{}).
-	// 	AddForeignKey("client_id", "clients(id)", "NO ACTION", "NO ACTION").
+	// 	AddForeignKey("client_id", "users(id)", "NO ACTION", "NO ACTION").
 	// 	AddForeignKey("brand_id", "brands(id)", "NO ACTION", "NO ACTION")
 
 	// // mantenimiento
