@@ -2,6 +2,7 @@ package routines
 
 import (
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"github.com/motorDoc-api/v1/app/global"
@@ -20,6 +21,21 @@ func GetByWorkshop(c *gin.Context) {
 	user := c.MustGet("user").(*entities.User)
 
 	allRoutines, err := entities.GetByWorkshop(user)
+	if err != nil {
+		response := global.ResponseServices(allRoutines, "400", err.Error())
+		c.JSON(http.StatusOK, response)
+		return
+	}
+	response := global.ResponseServices(allRoutines, "200", "Exito")
+	c.JSON(http.StatusOK, response)
+	return
+}
+
+// GetByWorkshopID funcion para traerla  las rutinas que ofrece un taller
+func GetByWorkshopID(c *gin.Context) {
+	workshopID, _ := strconv.ParseInt(c.Param("workshopID"), 10, 64)
+
+	allRoutines, err := entities.GetRoutinesByWorkshopID(workshopID)
 	if err != nil {
 		response := global.ResponseServices(allRoutines, "400", err.Error())
 		c.JSON(http.StatusOK, response)

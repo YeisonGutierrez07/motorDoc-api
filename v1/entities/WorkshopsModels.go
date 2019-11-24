@@ -26,6 +26,7 @@ type WorkshopRoutine struct {
 	RoutineID     int64   `json:"routine_id" db:"routine_id"`
 	Routine       Routine `json:"routine"`
 	EstimatedTime string  `json:"estimated_time" db:"estimated_time"`
+	EstimatedCost string  `json:"estimated_cost" db:"estimated_cost"`
 }
 
 // GetWorkshop servicio para buscar y retornar la info del taller
@@ -33,6 +34,15 @@ func GetWorkshop(user *User) (Workshop, error) {
 	workshop := Workshop{}
 	if shared.GetDb().Set("gorm:auto_preload", true).Where("user_id = ?", user.ID).First(&workshop).RecordNotFound() {
 		return workshop, errors.New("No se encontro el este usuario como taller")
+	}
+	return workshop, nil
+}
+
+// GetWorkshopByID servicio para buscar y retornar la info de un taller filtrado por ID
+func GetWorkshopByID(workShopID int64) (Workshop, error) {
+	workshop := Workshop{}
+	if shared.GetDb().Set("gorm:auto_preload", true).Where("id = ?", workShopID).First(&workshop).RecordNotFound() {
+		return workshop, errors.New("No se encontro un taller")
 	}
 	return workshop, nil
 }
