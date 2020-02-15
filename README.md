@@ -2,7 +2,7 @@
 
 -Tener la base de datos llamada motorDoc
 - Tener el proyecto ubicado en $GOPATH/src/github.com/
-- go get github.com/motorDoc-api
+- go get github.com/YeisonGutierrez07/motorDoc-api
 
 
 ## Ejecución

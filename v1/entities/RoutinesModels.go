@@ -3,7 +3,7 @@ package entities
 import (
 	"fmt"
 
-	"github.com/motorDoc-api/shared"
+	"github.com/YeisonGutierrez07/motorDoc-api/shared"
 )
 
 // Routine Modelo para los rutinas

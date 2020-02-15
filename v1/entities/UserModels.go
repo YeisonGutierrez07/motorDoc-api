@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/motorDoc-api/shared"
+	"github.com/YeisonGutierrez07/motorDoc-api/shared"
 )
 
 const (

@@ -3,7 +3,7 @@ package workshop
 import (
 	"strings"
 
-	"github.com/motorDoc-api/v1/entities"
+	"github.com/YeisonGutierrez07/motorDoc-api/v1/entities"
 )
 
 // GetWorkshop servicio para buscar y retornar la info del taller

@@ -5,8 +5,9 @@
 package main
 
 import (
-	"github.com/motorDoc-api/routes"
-	"github.com/motorDoc-api/shared"
+	"github.com/YeisonGutierrez07/motorDoc-api/routes"
+	"github.com/YeisonGutierrez07/motorDoc-api/shared"
+	"os"
 )
 
 func main() {
@@ -79,6 +80,12 @@ func main() {
 	// Inicializa las rutas
 	r := routes.InitRouter()
 
+	port := os.Getenv("PORT")
+
+	if port == "" {
+		port = "8000"
+	}
+
 	//Run Server
-	r.Run(":5000")
+	r.Run(":" + port)
 }

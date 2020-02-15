@@ -3,7 +3,7 @@ package entities
 import (
 	"errors"
 
-	"github.com/motorDoc-api/shared"
+	"github.com/YeisonGutierrez07/motorDoc-api/shared"
 )
 
 type Brand struct {

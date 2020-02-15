@@ -2,15 +2,15 @@ package routes
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/motorDoc-api/middlewares"
-	"github.com/motorDoc-api/v1/app/auth"
-	"github.com/motorDoc-api/v1/app/brands"
-	"github.com/motorDoc-api/v1/app/company"
-	"github.com/motorDoc-api/v1/app/mechanic"
-	"github.com/motorDoc-api/v1/app/routines"
-	"github.com/motorDoc-api/v1/app/users"
-	"github.com/motorDoc-api/v1/app/vehicles"
-	"github.com/motorDoc-api/v1/app/workshop"
+	"github.com/YeisonGutierrez07/motorDoc-api/middlewares"
+	"github.com/YeisonGutierrez07/motorDoc-api/v1/app/auth"
+	"github.com/YeisonGutierrez07/motorDoc-api/v1/app/brands"
+	"github.com/YeisonGutierrez07/motorDoc-api/v1/app/company"
+	"github.com/YeisonGutierrez07/motorDoc-api/v1/app/mechanic"
+	"github.com/YeisonGutierrez07/motorDoc-api/v1/app/routines"
+	"github.com/YeisonGutierrez07/motorDoc-api/v1/app/users"
+	"github.com/YeisonGutierrez07/motorDoc-api/v1/app/vehicles"
+	"github.com/YeisonGutierrez07/motorDoc-api/v1/app/workshop"
 )
 
 // InitRouter inicializar del paquete de routes
