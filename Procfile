@@ -1,1 +1,1 @@
-worker: motorDoc-api
+web: motorDoc-api
