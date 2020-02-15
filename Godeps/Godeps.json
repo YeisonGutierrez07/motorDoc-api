@@ -1,5 +1,5 @@
 {
-	"ImportPath": "github.com/motorDoc-api",
+	"ImportPath": "github.com/YeisonGutierrez07/motorDoc-api",
 	"GoVersion": "go1.13",
 	"GodepVersion": "v80",
 	"Deps": [
