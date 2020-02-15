@@ -21,7 +21,7 @@ func Init() {
 		database = "d8e81j1jlb7c16"
 	)
 
-	dbinfo := fmt.Sprintf("user=%s password=%s host=%s port=5432 dbname=%s",
+	dbinfo := fmt.Sprintf("user=%s password=%s host=%s port=5432 dbname=%s", // sslmode=disable
 		user,
 		password,
 		host,
