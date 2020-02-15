@@ -6,8 +6,8 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	"github.com/motorDoc-api/v1/entities"
-	"github.com/motorDoc-api/v1/app/global"
+	"github.com/YeisonGutierrez07/motorDoc-api/v1/entities"
+	"github.com/YeisonGutierrez07/motorDoc-api/v1/app/global"
 )
 
 // GetAll funcion para traer toda la información de las empresas

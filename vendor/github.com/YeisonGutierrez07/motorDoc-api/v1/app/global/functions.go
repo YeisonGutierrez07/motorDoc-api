@@ -1,7 +1,7 @@
 package global
 
 import (
-	"github.com/YeisonGutierrez07/motorDoc-api/shared"
+	"github.com/motorDoc-api/shared"
 )
 
 // ResponseServices Función para responder a los servicios
