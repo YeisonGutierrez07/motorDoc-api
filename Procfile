@@ -1,1 +1,1 @@
-web: github.com/motorDoc-api
+worker: go run main.go
