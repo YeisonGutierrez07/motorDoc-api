@@ -5,8 +5,8 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	"github.com/motorDoc-api/motorDoc-api/v1/app/global"
-	"github.com/motorDoc-api/motorDoc-api/v1/entities"
+	"github.com/motorDoc-api/v1/app/global"
+	"github.com/motorDoc-api/v1/entities"
 )
 
 // Get funcion para traerla  información de los talleres

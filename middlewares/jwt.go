@@ -5,8 +5,8 @@ import (
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
-	"github.com/motorDoc-api/motorDoc-api/v1/entities"
 	"github.com/motorDoc-api/shared"
+	"github.com/motorDoc-api/v1/entities"
 )
 
 // AuthHandler agregar las rutas a un validador

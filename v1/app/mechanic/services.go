@@ -1,7 +1,7 @@
 package mechanic
 
 import (
-	"github.com/motorDoc-api/motorDoc-api/v1/entities"
+	"github.com/motorDoc-api/v1/entities"
 )
 
 // GetMechanic servicio para buscar y retornar la info del mecanico

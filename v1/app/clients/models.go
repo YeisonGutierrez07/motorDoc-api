@@ -1,7 +1,5 @@
 package clients
 
-import "github.com/motorDoc-api/motorDoc-api/v1/app/global"
-
 // Client Modelo para los clientes
 type Client struct {
 	global.BaseModel

@@ -4,7 +4,7 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/motorDoc-api/motorDoc-api/v1/entities"
+	"github.com/motorDoc-api/v1/entities"
 )
 
 // GetCompanies servicio para validar que sea un SUPERADMIN quien lo este consultando y retornar un arreglo de empresas
