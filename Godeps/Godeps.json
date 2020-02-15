@@ -1,8 +1,24 @@
 {
-	"ImportPath": "github.com/YeisonGutierrez07/motorDoc-api",
+	"ImportPath": "github.com/motorDoc-api",
 	"GoVersion": "go1.13",
 	"GodepVersion": "v80",
 	"Deps": [
+		{
+			"ImportPath": "github.com/YeisonGutierrez07/motorDoc-api/routes",
+			"Rev": "35331a2acd4bdbda6eaacc75c7dddbedf69fea8f"
+		},
+		{
+			"ImportPath": "github.com/YeisonGutierrez07/motorDoc-api/shared",
+			"Rev": "35331a2acd4bdbda6eaacc75c7dddbedf69fea8f"
+		},
+		{
+			"ImportPath": "github.com/YeisonGutierrez07/motorDoc-api/v1/app/global",
+			"Rev": "35331a2acd4bdbda6eaacc75c7dddbedf69fea8f"
+		},
+		{
+			"ImportPath": "github.com/YeisonGutierrez07/motorDoc-api/v1/entities",
+			"Rev": "35331a2acd4bdbda6eaacc75c7dddbedf69fea8f"
+		},
 		{
 			"ImportPath": "github.com/dgrijalva/jwt-go",
 			"Comment": "v3.2.0-10-g5e25c22",
