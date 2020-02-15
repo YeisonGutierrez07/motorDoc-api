@@ -4,8 +4,8 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/motorDoc-api/motorDoc-api/v1/app/global"
-	"github.com/motorDoc-api/motorDoc-api/v1/entities"
+	"github.com/motorDoc-api/v1/app/global"
+	"github.com/motorDoc-api/v1/entities"
 )
 
 // ServiceTest funcion para hacer pruebas del server corriendo

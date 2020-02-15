@@ -1,8 +1,44 @@
 {
-	"ImportPath": "github.com/YeisonGutierrez07/motorDoc-api",
+	"ImportPath": "github.com/motorDoc-api",
 	"GoVersion": "go1.13",
 	"GodepVersion": "v80",
 	"Deps": [
+		{
+			"ImportPath": "github.com/YeisonGutierrez07/motorDoc-api/middlewares",
+			"Rev": "35331a2acd4bdbda6eaacc75c7dddbedf69fea8f"
+		},
+		{
+			"ImportPath": "github.com/YeisonGutierrez07/motorDoc-api/v1/app/auth",
+			"Rev": "35331a2acd4bdbda6eaacc75c7dddbedf69fea8f"
+		},
+		{
+			"ImportPath": "github.com/YeisonGutierrez07/motorDoc-api/v1/app/brands",
+			"Rev": "35331a2acd4bdbda6eaacc75c7dddbedf69fea8f"
+		},
+		{
+			"ImportPath": "github.com/YeisonGutierrez07/motorDoc-api/v1/app/company",
+			"Rev": "35331a2acd4bdbda6eaacc75c7dddbedf69fea8f"
+		},
+		{
+			"ImportPath": "github.com/YeisonGutierrez07/motorDoc-api/v1/app/mechanic",
+			"Rev": "35331a2acd4bdbda6eaacc75c7dddbedf69fea8f"
+		},
+		{
+			"ImportPath": "github.com/YeisonGutierrez07/motorDoc-api/v1/app/routines",
+			"Rev": "35331a2acd4bdbda6eaacc75c7dddbedf69fea8f"
+		},
+		{
+			"ImportPath": "github.com/YeisonGutierrez07/motorDoc-api/v1/app/users",
+			"Rev": "35331a2acd4bdbda6eaacc75c7dddbedf69fea8f"
+		},
+		{
+			"ImportPath": "github.com/YeisonGutierrez07/motorDoc-api/v1/app/vehicles",
+			"Rev": "35331a2acd4bdbda6eaacc75c7dddbedf69fea8f"
+		},
+		{
+			"ImportPath": "github.com/YeisonGutierrez07/motorDoc-api/v1/app/workshop",
+			"Rev": "35331a2acd4bdbda6eaacc75c7dddbedf69fea8f"
+		},
 		{
 			"ImportPath": "github.com/dgrijalva/jwt-go",
 			"Comment": "v3.2.0-10-g5e25c22",

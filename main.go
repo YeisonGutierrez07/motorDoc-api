@@ -5,8 +5,8 @@
 package main
 
 import (
-	"github.com/YeisonGutierrez07/motorDoc-api/routes"
-	"github.com/YeisonGutierrez07/motorDoc-api/shared"
+	"github.com/motorDoc-api/routes"
+	"github.com/motorDoc-api/shared"
 )
 
 func main() {
