@@ -10,7 +10,10 @@ import (
 
 // ServiceTest funcion para hacer pruebas del server corriendo
 func ServiceTest(c *gin.Context) {
-	response := global.ResponseServices("", "200", "Yeison, por fin")
+	name := c.Query("name")
+
+	message := "El nombre por parametros es : " + name
+	response := global.ResponseServices("", "200", message)
 	c.JSON(http.StatusOK, response)
 }
 

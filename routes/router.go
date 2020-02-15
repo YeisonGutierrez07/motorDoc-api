@@ -1,7 +1,6 @@
 package routes
 
 import (
-	"github.com/gin-gonic/gin"
 	"github.com/YeisonGutierrez07/motorDoc-api/middlewares"
 	"github.com/YeisonGutierrez07/motorDoc-api/v1/app/auth"
 	"github.com/YeisonGutierrez07/motorDoc-api/v1/app/brands"
@@ -11,6 +10,7 @@ import (
 	"github.com/YeisonGutierrez07/motorDoc-api/v1/app/users"
 	"github.com/YeisonGutierrez07/motorDoc-api/v1/app/vehicles"
 	"github.com/YeisonGutierrez07/motorDoc-api/v1/app/workshop"
+	"github.com/gin-gonic/gin"
 )
 
 // InitRouter inicializar del paquete de routes
@@ -34,6 +34,7 @@ func Routes(r *gin.Engine) {
 	v1 := r.Group("/v1")
 	{
 		//// rutas publicas
+		v1.POST("/testv1", users.ServiceTest)
 		v1.POST("/register", users.Register)
 		v1.POST("/login", auth.HandleLogin)
 	}
