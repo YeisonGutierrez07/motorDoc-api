@@ -29,11 +29,10 @@ func InitMiddleware(engine *gin.Engine) {
 // Routes agregar los endPoints
 func Routes(r *gin.Engine) {
 
-	r.GET("/", users.ServiceTest)
-
 	v1 := r.Group("/v1")
 	{
 		//// rutas publicas
+		v1.GET("/testv1", users.ServiceTest)
 		v1.POST("/testv1", users.ServiceTest)
 		v1.POST("/register", users.Register)
 		v1.POST("/login", auth.HandleLogin)
