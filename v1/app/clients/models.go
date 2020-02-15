@@ -1,6 +1,6 @@
 package clients
 
-import "github.com/motorDoc-api/v1/app/global"
+import "github.com/YeisonGutierrez07/motorDoc-api/v1/app/global"
 
 // Client Modelo para los clientes
 type Client struct {

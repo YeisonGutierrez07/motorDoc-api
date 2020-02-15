@@ -3,9 +3,9 @@ package mechanic
 import (
 	"net/http"
 
+	"github.com/YeisonGutierrez07/motorDoc-api/v1/app/global"
+	"github.com/YeisonGutierrez07/motorDoc-api/v1/entities"
 	"github.com/gin-gonic/gin"
-	"github.com/motorDoc-api/v1/app/global"
-	"github.com/motorDoc-api/v1/entities"
 )
 
 // Get funcion para traerla  información de los mecanicos
