@@ -3,7 +3,7 @@
 	"GoVersion": "go1.13",
 	"GodepVersion": "v80",
 	"Packages": [
-		"github.com/YeisoGutierrez07/motorDoc-api/..."
+		"./..."
 	],
 	"Deps": []
 }
