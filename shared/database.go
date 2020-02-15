@@ -18,7 +18,7 @@ func Init() {
 		host     = "ec2-52-73-247-67.compute-1.amazonaws.com"
 		user     = "hyrjphcachsrpy"
 		password = "1ef60c7ca1d1737639e27fcfd40b3b7cb65669499cdc7baefa85e76274c92043"
-		database = "d8e81j1jlb7c16"
+		database = "d8e81j1jlb7c16a" // a
 	)
 
 	dbinfo := fmt.Sprintf("user=%s password=%s host=%s port=5432 dbname=%s", // sslmode=disable
