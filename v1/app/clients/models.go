@@ -1,9 +1,9 @@
 package clients
 
-import "github.com/YeisonGutierrez07/motorDoc-api/v1/app/global"
+import "github.com/YeisonGutierrez07/motorDoc-api/v1/entities"
 
 // Client Modelo para los clientes
 type Client struct {
-	global.BaseModel
+	entities.BaseModel
 	UserID int64 `json:"user_id" db:"user_id"`
 }
