@@ -1,6 +1,6 @@
 package vehicles
 
-import "github.com/YeisonGutierrez07/motorDoc-api/v1/entities"
+import "github.com/motorDoc-api/v1/entities"
 
 func RegisterNewVehicle(user *entities.User, data CreateVehicle) (entities.Vehicle, error) {
 	newVehicle := entities.Vehicle{}
