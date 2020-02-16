@@ -1,7 +1,7 @@
 package entities
 
 import (
-	"github.com/YeisonGutierrez07/motorDoc-api/shared"
+	"github.com/motorDoc-api/shared"
 )
 
 // Vehicle Modelo para los vehiculos

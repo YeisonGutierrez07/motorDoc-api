@@ -4,8 +4,8 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/YeisonGutierrez07/motorDoc-api/v1/app/global"
-	"github.com/YeisonGutierrez07/motorDoc-api/v1/entities"
+	"github.com/motorDoc-api/v1/app/global"
+	"github.com/motorDoc-api/v1/entities"
 )
 
 // HandleLogin función para hacer login

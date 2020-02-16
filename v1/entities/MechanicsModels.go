@@ -3,7 +3,7 @@ package entities
 import (
 	"errors"
 
-	"github.com/YeisonGutierrez07/motorDoc-api/shared"
+	"github.com/motorDoc-api/shared"
 )
 
 // Mechanic Modelo para los mecanicos
