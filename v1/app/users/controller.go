@@ -3,16 +3,14 @@ package users
 import (
 	"net/http"
 
+	"github.com/gin-gonic/gin"
 	"github.com/motorDoc-api/v1/app/global"
 	"github.com/motorDoc-api/v1/entities"
-	"github.com/gin-gonic/gin"
 )
 
 // ServiceTest funcion para hacer pruebas del server corriendo
 func ServiceTest(c *gin.Context) {
-	name := c.Query("name")
-
-	message := "El nombre por parametros es : " + name
+	message := "Yeison nuevo deploy :D"
 	response := global.ResponseServices("", "200", message)
 	c.JSON(http.StatusOK, response)
 }

@@ -16,7 +16,7 @@ func HandleLogin(c *gin.Context) {
 		user, errLogin := Login(loginValidator)
 		if errLogin != nil {
 			response := global.ResponseServices(loginValidator, "400", errLogin.Error())
-			c.JSON(http.StatusOK, response)
+			c.JSON(http.StatusUnauthorized, response)
 			return
 		}
 		response := global.ResponseServices(user, "200", "Se he iniciado sesión con exito")
@@ -24,5 +24,5 @@ func HandleLogin(c *gin.Context) {
 		return
 	}
 	response := global.ResponseServices(loginValidator, "400", err.Error())
-	c.JSON(http.StatusOK, response)
+	c.JSON(http.StatusBadRequest, response)
 }
