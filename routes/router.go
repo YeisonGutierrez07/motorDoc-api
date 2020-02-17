@@ -33,7 +33,6 @@ func Routes(r *gin.Engine) {
 	{
 		//// rutas publicas
 		v1.GET("/testv1", users.ServiceTest)
-		v1.POST("/testv1", users.ServiceTest)
 		v1.POST("/register", users.Register)
 		v1.POST("/login", auth.HandleLogin)
 	}
