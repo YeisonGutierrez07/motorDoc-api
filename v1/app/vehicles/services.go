@@ -10,6 +10,7 @@ func RegisterNewVehicle(user *entities.User, data CreateVehicle) (entities.Vehic
 	newVehicle.Estado = data.Estado
 	newVehicle.Image = data.Image
 	newVehicle.Reference = data.Reference
+	newVehicle.Placa = data.Placa
 
 	vehicle, err := entities.CreateVehicle(newVehicle)
 	return vehicle, err

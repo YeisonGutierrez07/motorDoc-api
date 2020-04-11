@@ -14,6 +14,7 @@ type Vehicle struct {
 	Estado    string `json:"estado" db:"estado"`
 	Image     string `json:"image" db:"image"`
 	Reference string `json:"reference" db:"reference"`
+	Placa     string `json:"placa" db:"placa"`
 }
 
 func GetAllVehicles(user *User) []Vehicle {
