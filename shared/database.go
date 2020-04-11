@@ -19,6 +19,12 @@ func Init() {
 		user     = "hyrjphcachsrpy"
 		password = "1ef60c7ca1d1737639e27fcfd40b3b7cb65669499cdc7baefa85e76274c92043"
 		database = "d8e81j1jlb7c16"
+
+		// host     = "localhost"
+		// user     = "postgres"
+		// password = "motordoc"
+		// dbname   = "postgres"
+		// database = "motordoc"
 	)
 
 	dbinfo := fmt.Sprintf("user=%s password=%s host=%s port=5432 dbname=%s", // sslmode=disable

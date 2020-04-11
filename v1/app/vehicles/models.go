@@ -7,4 +7,5 @@ type CreateVehicle struct {
 	Image     string `json:"image" binding:"required"`
 	Estado    string `json:"estado" binding:"required"`
 	Reference string `json:"reference" binding:"required"`
+	Placa     string `json:"placa" binding:"required"`
 }
