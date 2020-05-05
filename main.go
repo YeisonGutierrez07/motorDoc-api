@@ -50,8 +50,7 @@ func main() {
 
 	// rutinas por mecanico
 	shared.GetDb().AutoMigrate(entities.Vehicle{}).
-		AddForeignKey("client_id", "users(id)", "NO ACTION", "NO ACTION").
-		AddForeignKey("brand_id", "brands(id)", "NO ACTION", "NO ACTION")
+		AddForeignKey("client_id", "users(id)", "NO ACTION", "NO ACTION")
 
 	// Final de las migraciones --------------------------------------------------------------
 
