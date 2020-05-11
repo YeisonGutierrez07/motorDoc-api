@@ -69,6 +69,7 @@ func Routes(r *gin.Engine) {
 		routine.GET("/byWorkshopID/:workshopID", routines.GetByWorkshopID)
 
 		routine.POST("/addRoutineByWorkshop", routines.AddRoutineByWorkshop)
+		routine.GET("/getTreatingMechanic/:workshopID/:vehicleID", routines.GetTreatingMechanic)
 
 		// users
 		user := v1.Group("user")
