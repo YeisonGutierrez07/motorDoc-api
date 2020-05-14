@@ -1,8 +1,6 @@
 package entities
 
 import (
-	"fmt"
-
 	"github.com/motorDoc-api/shared"
 )
 
@@ -17,6 +15,15 @@ type AddRoutine struct {
 	RoutineID     int64  `json:"routine_id" binding:"required"`
 	EstimatedTime string `json:"estimated_time" binding:"required"`
 	EstimatedCost string `json:"estimated_cost" binding:"required"`
+}
+
+type TreatingMechanic struct {
+	ID         int64  `json:"id" db:"id"`
+	Name       string `json:"name" db:"name"`
+	LastName   string `json:"last_name" db:"last_name"`
+	CompanyID  int64  `json:"company_id" db:"company_id"`
+	UserID     int64  `json:"user_id" db:"user_id"`
+	WorkshopID int64  `json:"workshop_id" db:"workshop_id"`
 }
 
 // GetAllRutines traer todas las rutinas
@@ -41,11 +48,6 @@ func GetByWorkshop(user *User) ([]WorkshopRoutine, error) {
 
 // GetRoutinesByWorkshopID traer todas las rutinas del taller filtrado por id
 func GetRoutinesByWorkshopID(workshopID int64) ([]WorkshopRoutine, error) {
-	fmt.Println("workshopID: ", workshopID)
-	fmt.Println("workshopID: ", workshopID)
-	fmt.Println("workshopID: ", workshopID)
-	fmt.Println("workshopID: ", workshopID)
-	fmt.Println("workshopID: ", workshopID)
 	allRoutines := []WorkshopRoutine{}
 	shared.GetDb().Set("gorm:auto_preload", true).Where("workshop_id=?", workshopID).Find(&allRoutines)
 	return allRoutines, nil
@@ -71,4 +73,13 @@ func AddRoutineByWorkshop(user *User, allRoutinesAdd []AddRoutine) ([]WorkshopRo
 	}
 	shared.GetDb().Set("gorm:auto_preload", true).Where("workshop_id=?", workshop.ID).Find(&allRoutines)
 	return allRoutines, nil
+}
+
+// GetTreatingMechanic traer todas las rutinas del taller filtrado por id
+func GetTreatingMechanic(workshopID string, vehicleID string) ([]TreatingMechanic, error) {
+	treatingMechanic := []TreatingMechanic{}
+
+	query := "select * from gettreatingmechanic(" + workshopID + "," + vehicleID + ")"
+	shared.GetDb().Raw(query).Find(&treatingMechanic)
+	return treatingMechanic, nil
 }
