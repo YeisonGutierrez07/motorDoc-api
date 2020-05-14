@@ -66,3 +66,19 @@ func AddRoutineByWorkshop(c *gin.Context) {
 	response := global.ResponseServices(addRoutine, "400", err.Error())
 	c.JSON(400, response)
 }
+
+// GetTreatingMechanic funcion para traerla  las rutinas que ofrece un taller
+func GetTreatingMechanic(c *gin.Context) {
+	workshopID := c.Param("workshopID")
+	vehicleID := c.Param("vehicleID")
+
+	allRoutines, err := entities.GetTreatingMechanic(workshopID, vehicleID)
+	if err != nil {
+		response := global.ResponseServices(allRoutines, "400", err.Error())
+		c.JSON(http.StatusOK, response)
+		return
+	}
+	response := global.ResponseServices(allRoutines, "200", "Exito")
+	c.JSON(http.StatusOK, response)
+	return
+}

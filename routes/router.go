@@ -3,6 +3,7 @@ package routes
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/motorDoc-api/middlewares"
+	"github.com/motorDoc-api/v1/app/appointment"
 	"github.com/motorDoc-api/v1/app/auth"
 	"github.com/motorDoc-api/v1/app/brands"
 	"github.com/motorDoc-api/v1/app/company"
@@ -69,6 +70,10 @@ func Routes(r *gin.Engine) {
 		routine.GET("/byWorkshopID/:workshopID", routines.GetByWorkshopID)
 
 		routine.POST("/addRoutineByWorkshop", routines.AddRoutineByWorkshop)
+		routine.GET("/getTreatingMechanic/:workshopID/:vehicleID", routines.GetTreatingMechanic)
+
+		appointments := v1.Group("appointments")
+		appointments.GET("/", appointment.GetAppointments)
 
 		// users
 		user := v1.Group("user")
