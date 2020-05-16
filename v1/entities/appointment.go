@@ -4,6 +4,7 @@ import "github.com/motorDoc-api/shared"
 
 type AppointmentsResponse struct {
 	Idmechanic      int64  `json:"idmechanic" db:"idmechanic"`
+	Mechanicname    string `json:"mechanicname" db:"mechanicname"`
 	Appointmentdate string `json:"appointmentdate" db:"appointmentdate"`
 	Timeroutine     int64  `json:"timeroutine" db:"timeroutine"`
 	Idroutine       int64  `json:"idroutine" db:"idroutine"`
