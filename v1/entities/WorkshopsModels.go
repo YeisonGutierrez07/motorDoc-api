@@ -53,12 +53,13 @@ func GetAllWorkshop(search string) ([]Workshop, error) {
 	searchByName := ""
 
 	if search != "" {
-		searchByName = "unaccent(LOWER(name)) LIKE unaccent('%" + search + "%')"
+		searchByName = "name LIKE '%" + search + "%'"
 	}
 
 	if shared.GetDb().Set("gorm:auto_preload", true).Where(searchByName).Find(&workshop).RecordNotFound() {
 		return workshop, errors.New("No se encontro el este usuario como taller")
 	}
+
 	return workshop, nil
 }
 

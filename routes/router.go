@@ -78,6 +78,7 @@ func Routes(r *gin.Engine) {
 		// users
 		user := v1.Group("user")
 		user.GET("/", users.GetDataUser)
+		user.GET("/myWorkShop", users.GetDataWorkShopData)
 		user.PUT("/reset", users.ResetPassword)
 
 		// brands
