@@ -130,3 +130,12 @@ func ResetPasswordUser(user *User, resetPassword ResetPassword) (User, error) {
 	}
 	return userResponse, errors.New("El usuario no se encontro en la base de datos")
 }
+
+// GetDataWorkShopData función para retornar la informacion del taller
+func GetDataWorkShopData(user *User) (Workshop, error) {
+	workShopData := Workshop{}
+	if shared.GetDb().Where("user_id = ?", user.ID).First(&workShopData).RecordNotFound() {
+		return workShopData, errors.New("No se encontro ningun usuario")
+	}
+	return workShopData, nil
+}

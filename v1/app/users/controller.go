@@ -60,3 +60,13 @@ func GetDataUser(c *gin.Context) {
 	response := global.ResponseServices(user, "200", "Información del usuario")
 	c.JSON(http.StatusOK, response)
 }
+
+// GetDataWorkShopData funcion para traer toda la información del taller
+func GetDataWorkShopData(c *gin.Context) {
+	user := c.MustGet("user").(*entities.User)
+
+	workshop, _ := entities.GetDataWorkShopData(user)
+
+	response := global.ResponseServices(workshop, "200", "Información del usuario")
+	c.JSON(http.StatusOK, response)
+}
