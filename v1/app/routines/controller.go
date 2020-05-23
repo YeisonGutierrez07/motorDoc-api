@@ -46,6 +46,22 @@ func GetByWorkshopID(c *gin.Context) {
 	return
 }
 
+// GetMechanicsByRoutine funcion para traerla  las mecanicos que trabajan en esas rutinas
+func GetMechanicsByRoutine(c *gin.Context) {
+	routineID := c.Param("routineID")
+	workshopID := c.Param("workshopID")
+
+	allMechanics, err := entities.GetMechanicsByRoutine(routineID, workshopID)
+	if err != nil {
+		response := global.ResponseServices(allMechanics, "400", err.Error())
+		c.JSON(http.StatusOK, response)
+		return
+	}
+	response := global.ResponseServices(allMechanics, "200", "Exito")
+	c.JSON(http.StatusOK, response)
+	return
+}
+
 // AddRoutineByWorkshop registrar de rutinas al taller
 func AddRoutineByWorkshop(c *gin.Context) {
 	addRoutine := []entities.AddRoutine{}

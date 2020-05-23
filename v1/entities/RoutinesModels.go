@@ -26,6 +26,13 @@ type TreatingMechanic struct {
 	WorkshopID int64  `json:"workshop_id" db:"workshop_id"`
 }
 
+type MechanicRoutine struct {
+	Idmechanic int64  `json:"idmechanic" db:"idmechanic"`
+	Name       string `json:"name" db:"name"`
+	LastName   string `json:"last_name" db:"last_name"`
+	ProfilePic string `json:"profile_pic" db:"profile_pic"`
+}
+
 // GetAllRutines traer todas las rutinas
 func GetAllRutines() []Routine {
 	allRoutines := []Routine{}
@@ -51,6 +58,16 @@ func GetRoutinesByWorkshopID(workshopID int64) ([]WorkshopRoutine, error) {
 	allRoutines := []WorkshopRoutine{}
 	shared.GetDb().Set("gorm:auto_preload", true).Where("workshop_id=?", workshopID).Find(&allRoutines)
 	return allRoutines, nil
+}
+
+// GetMechanicsByRoutine traer todas las rutinas del taller filtrado por id
+func GetMechanicsByRoutine(routineID string, workshopID string) ([]MechanicRoutine, error) {
+	allMechanics := []MechanicRoutine{}
+
+	query := "select * from getmechanicsbyroutine(" + routineID + "," + workshopID + ")"
+
+	shared.GetDb().Raw(query).Find(&allMechanics)
+	return allMechanics, nil
 }
 
 func AddRoutineByWorkshop(user *User, allRoutinesAdd []AddRoutine) ([]WorkshopRoutine, error) {

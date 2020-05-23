@@ -68,12 +68,15 @@ func Routes(r *gin.Engine) {
 		routine.GET("", routines.Get)
 		routine.GET("/byWorkshop", routines.GetByWorkshop)
 		routine.GET("/byWorkshopID/:workshopID", routines.GetByWorkshopID)
+		routine.GET("/byMechanics/:routineID/:workshopID", routines.GetMechanicsByRoutine)
 
 		routine.POST("/addRoutineByWorkshop", routines.AddRoutineByWorkshop)
 		routine.GET("/getTreatingMechanic/:workshopID/:vehicleID", routines.GetTreatingMechanic)
 
 		appointments := v1.Group("appointments")
 		appointments.GET("/", appointment.GetAppointments)
+		appointments.GET("/byUser/:userID/:workshopID", appointment.GetAppointmentsByClient)
+		appointments.GET("/notAvailables/:workshopID/:routineID", appointment.GetAppointmentsNotAvailables)
 
 		// users
 		user := v1.Group("user")

@@ -25,3 +25,39 @@ func GetAppointments(c *gin.Context) {
 	c.JSON(http.StatusOK, response)
 	return
 }
+
+// GetAppointmentsByClient funcion para traerla  las rutinas que ofrece un taller
+func GetAppointmentsByClient(c *gin.Context) {
+	userID := c.Param("userID")
+	workshopID := c.Param("workshopID")
+	fhinitial := c.Query("fhinitial")
+	fhend := c.Query("fhend")
+
+	allAppointments, err := entities.GetAppointmentsByClient(userID, workshopID, fhinitial, fhend)
+	if err != nil {
+		response := global.ResponseServices(allAppointments, "400", err.Error())
+		c.JSON(http.StatusOK, response)
+		return
+	}
+	response := global.ResponseServices(allAppointments, "200", "Exito")
+	c.JSON(http.StatusOK, response)
+	return
+}
+
+// GetAppointmentsNotAvailables funcion para traerla  las citas no disponibles
+func GetAppointmentsNotAvailables(c *gin.Context) {
+	workshopID := c.Param("workshopID")
+	routineID := c.Param("routineID")
+	fhinitial := c.Query("fhinitial")
+	fhend := c.Query("fhend")
+
+	allAppointments, err := entities.GetAppointmentsNotAvailables(workshopID, routineID, fhinitial, fhend)
+	if err != nil {
+		response := global.ResponseServices(allAppointments, "400", err.Error())
+		c.JSON(http.StatusOK, response)
+		return
+	}
+	response := global.ResponseServices(allAppointments, "200", "Exito")
+	c.JSON(http.StatusOK, response)
+	return
+}
