@@ -68,7 +68,7 @@ func Routes(r *gin.Engine) {
 		routine.GET("", routines.Get)
 		routine.GET("/byWorkshop", routines.GetByWorkshop)
 		routine.GET("/byWorkshopID/:workshopID", routines.GetByWorkshopID)
-		routine.GET("/byMechanics/:routineID/:workshopID", routines.GetMechanicsByRoutine)
+		routine.GET("/mechanics/:routineID/:workshopID", routines.GetMechanicsByRoutine)
 
 		routine.POST("/addRoutineByWorkshop", routines.AddRoutineByWorkshop)
 		routine.GET("/getTreatingMechanic/:workshopID/:vehicleID", routines.GetTreatingMechanic)
