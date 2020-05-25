@@ -20,6 +20,7 @@ type Mechanic struct {
 }
 
 type Routinemechanic struct {
+	ID         int64 `json:"id" db:"id"`
 	Idroutine  int64 `json:"idroutine" db:"idroutine"`
 	Idmechanic int64 `json:"idmechanic" db:"idmechanic"`
 }
@@ -71,14 +72,14 @@ func GetMyMechanic(user *User) ([]Mechanic, error) {
 func CreateRoutineMechanic(newRoutine Routinemechanic) (Routinemechanic, error) {
 	routine := Routinemechanic{}
 
-	if !shared.GetDb().Where("idmechanic=? AND idroutine=?", newRoutine.Idmechanic, newRoutine.Idroutine).First(&routine).RecordNotFound() {
-		err := shared.GetDb().Delete(&newRoutine).Error
-		if err != nil {
-			return newRoutine, err
-		}
+	if shared.GetDb().Where("idmechanic=? AND idroutine=?", newRoutine.Idmechanic, newRoutine.Idroutine).First(&routine).RecordNotFound() {
+		err := shared.GetDb().Create(&newRoutine).Error
+
+		return newRoutine, err
 	}
 
-	err := shared.GetDb().Create(&newRoutine).Error
+	err := shared.GetDb().Delete(&routine).Error
+
 	if err != nil {
 		return newRoutine, err
 	}
