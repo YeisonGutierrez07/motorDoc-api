@@ -9,12 +9,23 @@ import (
 // Mechanic Modelo para los mecanicos
 type Mechanic struct {
 	BaseModel
-	UserID     int64    `json:"user_id" db:"user_id"`
-	User       User     `json:"user"`
-	CompanyID  int64    `json:"company_id" db:"company_id"`
-	Company    Company  `json:"company"`
-	WorkshopID int64    `json:"workshop_id" db:"workshop_id"`
-	Workshop   Workshop `json:"workshop"`
+	UserID          int64             `json:"user_id" db:"user_id"`
+	User            User              `json:"user"`
+	CompanyID       int64             `json:"company_id" db:"company_id"`
+	Company         Company           `json:"company"`
+	WorkshopID      int64             `json:"workshop_id" db:"workshop_id"`
+	Workshop        Workshop          `json:"workshop"`
+	Idmechanic      int64             `json:"Idmechanic" db:"user_id"`
+	Routinemechanic []Routinemechanic `json:"routinemechanic" gorm:"foreignkey:Idmechanic"`
+}
+
+type Routinemechanic struct {
+	Idroutine  int64 `json:"idroutine" db:"idroutine"`
+	Idmechanic int64 `json:"idmechanic" db:"idmechanic"`
+}
+
+func (Routinemechanic) TableName() string {
+	return "routinemechanic"
 }
 
 // GetMechanic servicio para buscar en la base de datos y retornar la info del mecanico
@@ -54,4 +65,22 @@ func GetMyMechanic(user *User) ([]Mechanic, error) {
 		return mechanics, errors.New("No se encontro un listado de mecanicos")
 	}
 	return mechanics, nil
+}
+
+// CreateRoutineMechanic servicio para crear en la base de datos las rutinas de los mecanicos
+func CreateRoutineMechanic(newRoutine Routinemechanic) (Routinemechanic, error) {
+	routine := Routinemechanic{}
+
+	if !shared.GetDb().Where("idmechanic=? AND idroutine=?", newRoutine.Idmechanic, newRoutine.Idroutine).First(&routine).RecordNotFound() {
+		err := shared.GetDb().Delete(&newRoutine).Error
+		if err != nil {
+			return newRoutine, err
+		}
+	}
+
+	err := shared.GetDb().Create(&newRoutine).Error
+	if err != nil {
+		return newRoutine, err
+	}
+	return newRoutine, nil
 }

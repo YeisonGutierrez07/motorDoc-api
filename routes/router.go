@@ -62,6 +62,7 @@ func Routes(r *gin.Engine) {
 		mechanicGroup.POST("/create", mechanic.Create)
 		mechanicGroup.GET("/", mechanic.Get)
 		mechanicGroup.GET("/myMechanics", mechanic.MyMechanics)
+		mechanicGroup.POST("/routine", mechanic.CreateRoutineMechanic)
 
 		// routines
 		routine := v1.Group("routines")

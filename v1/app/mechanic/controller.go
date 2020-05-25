@@ -8,7 +8,7 @@ import (
 	"github.com/motorDoc-api/v1/entities"
 )
 
-// Get funcion para traerla  información de los mecanicos
+// Get funcion para traerla información de los mecanicos
 func Get(c *gin.Context) {
 	user := c.MustGet("user").(*entities.User)
 
@@ -55,4 +55,24 @@ func MyMechanics(c *gin.Context) {
 	}
 	response := global.ResponseServices(mechanic, "200", "Exito")
 	c.JSON(http.StatusOK, response)
+}
+
+// CreateRoutineMechanic registrar las nuevas rutinas de los mecanicos
+func CreateRoutineMechanic(c *gin.Context) {
+	newRoutine := entities.Routinemechanic{}
+
+	err := c.ShouldBind(&newRoutine)
+	if err == nil {
+		responseSuccess, errRegister := entities.CreateRoutineMechanic(newRoutine)
+		if errRegister != nil {
+			response := global.ResponseServices(newRoutine, "400", errRegister.Error())
+			c.JSON(400, response)
+			return
+		}
+		response := global.ResponseServices(responseSuccess, "200", "Se he creado el usuario con exito")
+		c.JSON(http.StatusOK, response)
+		return
+	}
+	response := global.ResponseServices(newRoutine, "400", err.Error())
+	c.JSON(400, response)
 }
