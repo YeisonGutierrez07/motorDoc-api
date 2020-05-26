@@ -76,7 +76,7 @@ func Routes(r *gin.Engine) {
 
 		appointments := v1.Group("appointments")
 		appointments.GET("/", appointment.GetAppointments)
-		appointments.GET("/byUser/:userID/:workshopID", appointment.GetAppointmentsByClient)
+		appointments.GET("/byUser/:userID", appointment.GetAppointmentsByClient)
 		appointments.GET("/notAvailables/:workshopID/:routineID", appointment.GetAppointmentsNotAvailables)
 
 		// users

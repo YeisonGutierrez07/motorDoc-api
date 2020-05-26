@@ -29,11 +29,10 @@ func GetAppointments(c *gin.Context) {
 // GetAppointmentsByClient funcion para traerla  las rutinas que ofrece un taller
 func GetAppointmentsByClient(c *gin.Context) {
 	userID := c.Param("userID")
-	workshopID := c.Param("workshopID")
 	fhinitial := c.Query("fhinitial")
 	fhend := c.Query("fhend")
 
-	allAppointments, err := entities.GetAppointmentsByClient(userID, workshopID, fhinitial, fhend)
+	allAppointments, err := entities.GetAppointmentsByClient(userID, fhinitial, fhend)
 	if err != nil {
 		response := global.ResponseServices(allAppointments, "400", err.Error())
 		c.JSON(http.StatusOK, response)

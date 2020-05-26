@@ -15,7 +15,7 @@ type AppointmentsClientResponse struct {
 	Name            string `json:"name" db:"name"`
 	LastName        string `json:"last_name" db:"last_name"`
 	Appointmentdate string `json:"appointmentdate" db:"appointmentdate"`
-	Timeroutine     int64  `json:"timeroutine" db:"timeroutine"`
+	Timeroutine     string `json:"timeroutine" db:"timeroutine"`
 	Idroutine       int64  `json:"idroutine" db:"idroutine"`
 	Status          int64  `json:"status" db:"status"`
 	Nameworkshop    string `json:"nameworkshop" db:"nameworkshop"`
@@ -41,10 +41,10 @@ func GetAppointmentsFilter(id1 string, id2 string, date1 string, date2 string) (
 }
 
 // GetAppointmentsByClient traer todas las citas del usuario final
-func GetAppointmentsByClient(userID string, workshopID string, fhinitial string, fhend string) ([]AppointmentsClientResponse, error) {
+func GetAppointmentsByClient(userID string, fhinitial string, fhend string) ([]AppointmentsClientResponse, error) {
 	appointmentsClientResponse := []AppointmentsClientResponse{}
 
-	query := "select * from getappointmentsuser(" + userID + "," + workshopID + ",'" + fhinitial + "','" + fhend + "')"
+	query := "select * from getappointmentsuser(" + userID + ",'" + fhinitial + "','" + fhend + "')"
 
 	error := shared.GetDb().Raw(query).Find(&appointmentsClientResponse).Error
 	return appointmentsClientResponse, error
