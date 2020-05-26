@@ -11,6 +11,7 @@ type AppointmentsResponse struct {
 }
 
 type AppointmentsClientResponse struct {
+	Idappointment   int64  `json:"idappointment" db:"idappointment"`
 	Idmechanic      int64  `json:"idmechanic" db:"idmechanic"`
 	Name            string `json:"name" db:"name"`
 	LastName        string `json:"last_name" db:"last_name"`
