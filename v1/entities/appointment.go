@@ -21,6 +21,7 @@ type AppointmentsClientResponse struct {
 	Status          int64  `json:"status" db:"status"`
 	Nameworkshop    string `json:"nameworkshop" db:"nameworkshop"`
 	Nameroutine     string `json:"nameroutine" db:"nameroutine"`
+	Idmaintenance   int64  `json:"idmaintenance" db:"idmaintenance"`
 }
 
 type AppointmentsNotAvailableResponse struct {
