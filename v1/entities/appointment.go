@@ -11,17 +11,18 @@ type AppointmentsResponse struct {
 }
 
 type AppointmentsClientResponse struct {
-	Idappointment   int64  `json:"idappointment" db:"idappointment"`
-	Idmechanic      int64  `json:"idmechanic" db:"idmechanic"`
-	Name            string `json:"name" db:"name"`
-	LastName        string `json:"last_name" db:"last_name"`
-	Appointmentdate string `json:"appointmentdate" db:"appointmentdate"`
-	Timeroutine     string `json:"timeroutine" db:"timeroutine"`
-	Idroutine       int64  `json:"idroutine" db:"idroutine"`
-	Status          int64  `json:"status" db:"status"`
-	Nameworkshop    string `json:"nameworkshop" db:"nameworkshop"`
-	Nameroutine     string `json:"nameroutine" db:"nameroutine"`
-	Idmaintenance   int64  `json:"idmaintenance" db:"idmaintenance"`
+	Idappointment       int64  `json:"idappointment" db:"idappointment"`
+	Idmechanic          int64  `json:"idmechanic" db:"idmechanic"`
+	Name                string `json:"name" db:"name"`
+	LastName            string `json:"last_name" db:"last_name"`
+	Appointmentdate     string `json:"appointmentdate" db:"appointmentdate"`
+	Timeroutine         string `json:"timeroutine" db:"timeroutine"`
+	Idroutine           int64  `json:"idroutine" db:"idroutine"`
+	Status              int64  `json:"status" db:"status"`
+	Nameworkshop        string `json:"nameworkshop" db:"nameworkshop"`
+	Nameroutine         string `json:"nameroutine" db:"nameroutine"`
+	Idmaintenance       int64  `json:"idmaintenance" db:"idmaintenance"`
+	Idmaintenancerating int64  `json:"idmaintenancerating" db:"idmaintenancerating"`
 }
 
 type AppointmentsNotAvailableResponse struct {
