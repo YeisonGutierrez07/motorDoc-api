@@ -47,6 +47,7 @@ type AppointmentsMechanicResponse struct {
 	Costroutine     string `json:"costroutine" db:"costroutine"`
 	Timeroutine     string `json:"timeroutine" db:"timeroutine"`
 	Image           string `json:"image" db:"image"`
+	Idappointment   int64  `json:"idappointment" db:"idappointment"`
 }
 
 // GetAppointmentsFilter traer todas las citas del taller filtrado por id
