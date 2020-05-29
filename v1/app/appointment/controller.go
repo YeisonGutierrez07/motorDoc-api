@@ -60,3 +60,20 @@ func GetAppointmentsNotAvailables(c *gin.Context) {
 	c.JSON(http.StatusOK, response)
 	return
 }
+
+// GetAppointmentsMechanics funcion para traerla  las citas no disponibles
+func GetAppointmentsMechanics(c *gin.Context) {
+	mechanicID := c.Param("mechanicID")
+	fhinitial := c.Query("fhinitial")
+	fhend := c.Query("fhend")
+
+	allAppointments, err := entities.GetAppointmentsMechanics(mechanicID, fhinitial, fhend)
+	if err != nil {
+		response := global.ResponseServices(allAppointments, "400", err.Error())
+		c.JSON(http.StatusOK, response)
+		return
+	}
+	response := global.ResponseServices(allAppointments, "200", "Exito")
+	c.JSON(http.StatusOK, response)
+	return
+}

@@ -34,6 +34,19 @@ type AppointmentsNotAvailableResponse struct {
 	Idroutine       string `json:"idroutine" db:"idroutine"`
 }
 
+type AppointmentsMechanicResponse struct {
+	Idmaintenance   int64  `json:"idmaintenance" db:"idmaintenance"`
+	Idroutine       int64  `json:"idroutine" db:"idroutine"`
+	Appointmentdate string `json:"appointmentdate" db:"appointmentdate"`
+	Nombrerutina    string `json:"nombrerutina" db:"nombrerutina"`
+	Nombreusuario   string `json:"nombreusuario" db:"nombreusuario"`
+	Placa           string `json:"placa" db:"placa"`
+	Marca           string `json:"marca" db:"marca"`
+	Namereference   string `json:"namereference" db:"namereference"`
+	Costroutine     string `json:"costroutine" db:"costroutine"`
+	Timeroutine     string `json:"timeroutine" db:"timeroutine"`
+}
+
 // GetAppointmentsFilter traer todas las citas del taller filtrado por id
 func GetAppointmentsFilter(id1 string, id2 string, date1 string, date2 string) ([]AppointmentsResponse, error) {
 	appointmentsResponse := []AppointmentsResponse{}
@@ -62,4 +75,14 @@ func GetAppointmentsNotAvailables(workshopID string, routineID string, fhinitial
 
 	error := shared.GetDb().Raw(query).Find(&appointmentsNotAvailableResponse).Error
 	return appointmentsNotAvailableResponse, error
+}
+
+// GetAppointmentsMechanics traer todas las citas no disponibles
+func GetAppointmentsMechanics(mechanicID string, fhinitial string, fhend string) ([]AppointmentsMechanicResponse, error) {
+	appointmentsMechanicResponse := []AppointmentsMechanicResponse{}
+
+	query := "select * from getappointmentsmechanicassigned(" + mechanicID + ",'" + fhinitial + "','" + fhend + "')"
+
+	error := shared.GetDb().Raw(query).Find(&appointmentsMechanicResponse).Error
+	return appointmentsMechanicResponse, error
 }
