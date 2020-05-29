@@ -45,6 +45,7 @@ type AppointmentsMechanicResponse struct {
 	Namereference   string `json:"namereference" db:"namereference"`
 	Costroutine     string `json:"costroutine" db:"costroutine"`
 	Timeroutine     string `json:"timeroutine" db:"timeroutine"`
+	Image           string `json:"image" db:"image"`
 }
 
 // GetAppointmentsFilter traer todas las citas del taller filtrado por id
