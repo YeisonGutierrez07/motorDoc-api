@@ -23,6 +23,7 @@ type AppointmentsClientResponse struct {
 	Nameroutine         string `json:"nameroutine" db:"nameroutine"`
 	Idmaintenance       int64  `json:"idmaintenance" db:"idmaintenance"`
 	Idmaintenancerating int64  `json:"idmaintenancerating" db:"idmaintenancerating"`
+	Costroutine         int64  `json:"costroutine" db:"costroutine"`
 }
 
 type AppointmentsNotAvailableResponse struct {
