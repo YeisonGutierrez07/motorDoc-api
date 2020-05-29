@@ -2,6 +2,7 @@ package entities
 
 import (
 	"errors"
+	"fmt"
 
 	"github.com/motorDoc-api/shared"
 )
@@ -46,11 +47,12 @@ func CreateMechanic(user *User, mechanic Mechanic) (Mechanic, error) {
 		return mechanic, errors.New("No se encontro el este usuario como taller")
 	}
 	mechanic.WorkshopID = workshop.ID
-	err := shared.GetDb().Create(&mechanic).Error
-	if err != nil {
-		return mechanic, err
-	}
-	return mechanic, nil
+
+	query := fmt.Sprintf("select addmechanic(%d, %d, %d )", mechanic.UserID, mechanic.CompanyID, mechanic.WorkshopID)
+
+	error := shared.GetDb().Raw(query).Find(&mechanic).Error
+	return mechanic, error
+
 }
 
 // GetMyMechanic servicio para buscar y retornar los mecanicos asociados al taller
