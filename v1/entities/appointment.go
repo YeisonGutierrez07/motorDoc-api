@@ -24,6 +24,8 @@ type AppointmentsClientResponse struct {
 	Idmaintenance       int64  `json:"idmaintenance" db:"idmaintenance"`
 	Idmaintenancerating int64  `json:"idmaintenancerating" db:"idmaintenancerating"`
 	Costroutine         int64  `json:"costroutine" db:"costroutine"`
+	Observaciones       string `json:"observaciones" db:"observaciones"`
+	Kilometraje         int64  `json:"kilometraje" db:"kilometraje"`
 }
 
 type AppointmentsNotAvailableResponse struct {
