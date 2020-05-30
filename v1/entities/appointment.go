@@ -50,6 +50,10 @@ type AppointmentsMechanicResponse struct {
 	Idappointment   int64  `json:"idappointment" db:"idappointment"`
 }
 
+type Cancelappointment struct {
+	Cancelappointment int64 `json:"cancelappointment" db:"cancelappointment"`
+}
+
 // GetAppointmentsFilter traer todas las citas del taller filtrado por id
 func GetAppointmentsFilter(id1 string, id2 string, date1 string, date2 string) ([]AppointmentsResponse, error) {
 	appointmentsResponse := []AppointmentsResponse{}
@@ -88,4 +92,14 @@ func GetAppointmentsMechanics(mechanicID string, fhinitial string, fhend string)
 
 	error := shared.GetDb().Raw(query).Find(&appointmentsMechanicResponse).Error
 	return appointmentsMechanicResponse, error
+}
+
+// CancelAppointment cancelar una cita
+func CancelAppointment(appointmentID string) ([]Cancelappointment, error) {
+	cancelappointment := []Cancelappointment{}
+
+	query := "select * from cancelappointment(" + appointmentID + ")"
+
+	error := shared.GetDb().Raw(query).Find(&cancelappointment).Error
+	return cancelappointment, error
 }

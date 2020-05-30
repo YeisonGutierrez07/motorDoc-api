@@ -77,3 +77,18 @@ func GetAppointmentsMechanics(c *gin.Context) {
 	c.JSON(http.StatusOK, response)
 	return
 }
+
+// CancelAppointment funcion para traerla  las citas no disponibles
+func CancelAppointment(c *gin.Context) {
+	appointmentID := c.Param("appointmentID")
+
+	allAppointments, err := entities.CancelAppointment(appointmentID)
+	if err != nil {
+		response := global.ResponseServices(allAppointments, "400", err.Error())
+		c.JSON(http.StatusOK, response)
+		return
+	}
+	response := global.ResponseServices(allAppointments, "200", "Exito")
+	c.JSON(http.StatusOK, response)
+	return
+}
